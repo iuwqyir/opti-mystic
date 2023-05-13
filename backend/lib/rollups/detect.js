@@ -4,9 +4,8 @@ const NUM_OF_DEPLOYMENTS_FOR_ROLLUP = process.env.NUM_OF_DEPLOYMENTS_FOR_ROLLUP 
 const BLOCK_OFFSET = process.env.BLOCK_OFFSET || 60
 
 const getBlockRange = async () => {
-  // const lastBlock = await alchemy.core.getBlockNumber()
-  // return { startBlock: lastBlock - BLOCK_OFFSET, endBlock: lastBlock }
-  return { startBlock: 8989307, endBlock: 8989330 }
+  const lastBlock = await alchemy.core.getBlockNumber()
+  return { startBlock: lastBlock - BLOCK_OFFSET, endBlock: lastBlock }
 }
 
 const findRollups = (deploymentsFrom) => {
