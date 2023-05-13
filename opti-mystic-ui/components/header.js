@@ -2,7 +2,7 @@ import * as React from 'react';
 import Image from "next/image";
 import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material';
 
-import logo from "../public/assets/logo.png";
+import logo from "../public/assets/logo-optimystic.png";
 
 export default function Header() {
   return (
@@ -20,7 +20,7 @@ export default function Header() {
                 display: { xs: 'none', md: 'flex' },
                 color: 'inherit',
                 textDecoration: 'none',
-                fontFamily: 'Helvetica'
+                fontFamily: 'Rubik'
               }}
             >
               The Optimistic Cross Roll Up Explorer
