@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-*/.env
+**/.env
 opti-mystic-ui/.env
 .env
 /.pnp
