@@ -12,6 +12,8 @@ functions:
     timeout: 900
     environment:
       PROVIDER_API_KEY: ${env:PROVIDER_API_KEY}
+      SUPABASE_URL: ${env:SUPABASE_URL}
+      SUPABASE_API_KEY: ${env:SUPABASE_API_KEY}
     events:
       - schedule:
           rate: rate(1 minute)
