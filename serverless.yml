@@ -11,7 +11,7 @@ functions:
     handler: tasks/detect-rollups.handler
     timeout: 900
     environment:
-      PROVIDER_API_KEY: 7Mt_tB3ZHI5S2IOS_grt7CwHfEMHefG2
+      PROVIDER_API_KEY: ${env:PROVIDER_API_KEY}
     events:
       - schedule:
           rate: rate(1 minute)

@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "deploy": "sls deploy --stage prod",
+    "deploy": "export PROVIDER_API_KEY=__REPLACE__THIS__ && sls deploy --stage prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
