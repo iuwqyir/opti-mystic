@@ -3,7 +3,7 @@ import styles from "@/styles/Home.module.css";
 import {Alert, Box, Button, Divider, Grid, ListItemText} from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-const RolloutDialog = (prop) => {
+const RollupDialog = (prop) => {
 
     const setEnvs = () => {
         return `export SEQ_ADDR=${prop?.rollup?.sequencer}
@@ -128,11 +128,11 @@ export RPC_KIND=alchemy`
                         <Divider/>
                     </Grid>
                     <Grid item xs={6}>
-                        <ListItemText primary="Block Hash" secondary={prop?.rollup?.blockHash?.substring(0,40) + '...' + prop?.rollup?.blockHash?.substring(60,prop?.rollup?.blockHash?.lenght)}/>
+                        <ListItemText primary="Block Hash" secondary={prop?.rollup?.block_hash?.substring(0,40) + '...' + prop?.rollup?.block_hash?.substring(60,prop?.rollup?.block_hash?.lenght)}/>
                         <Divider/>
                     </Grid>
                     <Grid item xs={6}>
-                        <ListItemText primary="Timestamp" secondary={prop?.rollup?.timestamp}/>
+                        <ListItemText primary="Timestamp" secondary={prop?.rollup?.l1_start_time}/>
                         <Divider/>
                     </Grid>
                     <Grid item xs={6}>
@@ -233,4 +233,4 @@ export RPC_KIND=alchemy`
     );
 };
 
-export { RolloutDialog };
+export { RollupDialog };

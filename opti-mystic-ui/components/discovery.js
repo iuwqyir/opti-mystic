@@ -1,7 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Box, ImageList, ImageListItem, Pagination, List, ListItem, Button, ListItemText, ListItemIcon, SvgIcon } from '@mui/material';
+import {
+  Box,
+  ImageList,
+  ImageListItem,
+  Pagination,
+  List,
+  ListItem,
+  Button,
+  ListItemText,
+  ListItemIcon,
+  Dialog, Toolbar, IconButton, Slide
+} from '@mui/material';
 import styles from "@/styles/Home.module.css";
 import truncateEthAddress from 'truncate-eth-address';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
@@ -9,12 +20,13 @@ import BatchPredictionOutlinedIcon from '@mui/icons-material/BatchPredictionOutl
 import AnimationOutlinedIcon from '@mui/icons-material/AnimationOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import StormOutlinedIcon from '@mui/icons-material/StormOutlined';
-import LinkIcon from '@mui/icons-material/Link';
 import goerliIcon from '../public/assets/goerli.svg';
 import maticIcon from '../public/assets/matic.svg';
 import optimismIcon from '../public/assets/optimism.svg';
 import Image from "next/image";
 import axios from 'axios';
+import {CloseIcon} from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
+import {RollupDialog} from "@/components/rollupDialog";
 
 
 const itemsPerPage = 9;
@@ -54,6 +66,7 @@ const Discovery = () => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = (entry) => {
+    console.log(entry)
     setRollup(entry)
     setOpen(true);
   };
@@ -148,26 +161,24 @@ const Discovery = () => {
             size="large"
             color="primary"
           />
-          <Dialog
-              fullScreen
-              open={open}
-              onClose={handleClose}
-              TransitionComponent={Transition}>
-            <Toolbar>
-              <IconButton
-                  edge="start"
-                  color="inherit"
-                  onClick={handleClose}
-                  aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-            </Toolbar>
-            <RolloutDialog rollup={rollup}/>
-          </Dialog>
-
         </Box>
       )}
+      <Dialog
+          fullScreen
+          open={open}
+          onClose={handleClose}>
+        <Toolbar>
+          <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+          >
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
+        <RollupDialog rollup={rollup}/>
+      </Dialog>
     </div>
   );
 };
