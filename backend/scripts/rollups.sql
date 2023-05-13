@@ -10,5 +10,6 @@ create table rollups (
   sequencer varchar(42) not null,
   l1_start_time integer not null,
   l1_chain_name text not null,
-  contracts JSON
+  block_hash text not null,
+  contracts JSON not null
 );

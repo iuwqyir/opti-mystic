@@ -9,8 +9,9 @@ module.exports = async (rollup) => {
     batcher: rollup.batcher,
     sequencer: rollup.sequencer,
     l1_start_time: rollup.blockTimestamp,
-    l1_chain_name: 'göerli', // TODO
-    contracts: JSON.stringify(rollup.created)
+    l1_chain_name: 'görli', // TODO
+    contracts: JSON.stringify(rollup.created),
+    blockHash: rollup.blockHash
   }
   const { error } = await supabase
     .from('rollups')
