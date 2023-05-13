@@ -20,14 +20,13 @@ const Discovery = () => {
     const fetchRollups = async () => {
       const { data: rollups, error} = await axios.get(`/api/getRollups`);
       setRollups(rollups)
-      console.log('🦄🦄🦄🦄', rollups)
       return rollups
     }
     
     const interval=setInterval(() => {
       fetchRollups()
       console.log('This will run every second!');
-    }, 1000);
+    }, 3000);
 
     return () => clearInterval(interval);
 
