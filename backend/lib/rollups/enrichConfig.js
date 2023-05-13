@@ -670,6 +670,8 @@ const parseConfigFromAddresses = async (addresses) => {
   let provider = new ethers.providers.AlchemyProvider("goerli", process.env.PROVIDER_API_KEY);
 
   for (const address of addresses) {
+    if (proposer && batcher && sequencer) return { batcher, proposer, sequencer }
+
     try {
       let contract = new ethers.Contract(address, getBatcherAbis(), provider);
       batcher = await contract.batcherHash()
@@ -687,6 +689,8 @@ const parseConfigFromAddresses = async (addresses) => {
     } catch (e) {}
   }
 
+  if (!batcher || !proposer || !sequencer) throw new Error('😡 Bad detector! Not a rollup 😡')
+
   return {
     batcher,
     proposer,
@@ -699,10 +703,12 @@ function parseByte32(bytes32String) {
 }
 
 module.exports = async (rollup) => {
-  let config = await parseConfigFromAddresses(rollup.created);
-  rollup.batcher = parseByte32(config.batcher)
-  rollup.proposer = parseByte32(config.proposer)
-  rollup.sequencer = config.sequencer;
+  const config = await parseConfigFromAddresses(rollup.created);
 
-  return rollup
+  return {
+    ...rollup,
+    batcher: parseByte32(config.batcher),
+    proposer: parseByte32(config.proposer),
+    sequencer: config.sequencer
+  }
 };
