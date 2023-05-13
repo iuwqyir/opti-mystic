@@ -6,6 +6,10 @@
     background-color: #000000;
 }
 
+.dialog {
+    background-color: #000000;
+}
+
 .arrow {
     display: flex;
     width: 1rem;

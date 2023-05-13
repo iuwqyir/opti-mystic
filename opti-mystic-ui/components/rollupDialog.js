@@ -107,7 +107,7 @@ export RPC_KIND=alchemy`
     }
 
     return (
-        <section className={styles.header}>
+        <section className={styles.dialog}>
 
             <Grid container spacing={2} sx={{ pl: "25%", pr: "25%", pt: 3, flexDirection: 'column', gap: '2rem'}}>
                 <Grid container >
@@ -155,7 +155,7 @@ export RPC_KIND=alchemy`
                     <Box component="div"
                         sx={{
                             p: 1,
-                            backgroundColor: 'black',
+                            backgroundColor: 'background.paper',
                             border: '2px solid #191919',
                             borderRadius: 2,
                             fontSize: '0.8rem',
@@ -175,7 +175,7 @@ export RPC_KIND=alchemy`
                     <Box component="div"
                          sx={{
                              p: 1,
-                             backgroundColor: 'black',
+                             backgroundColor: 'background.paper',
                              border: '2px solid #191919',
                              borderRadius: 2,
                              fontSize: '0.8rem',
@@ -196,7 +196,7 @@ export RPC_KIND=alchemy`
                     <Box component="div"
                          sx={{
                              p: 1,
-                             backgroundColor: 'black',
+                             backgroundColor: 'background.paper',
                              border: '2px solid #191919',
                              borderRadius: 2,
                              fontSize: '0.8rem',
@@ -216,7 +216,7 @@ export RPC_KIND=alchemy`
                     <Box component="div"
                          sx={{
                              p: 1,
-                             backgroundColor: 'black',
+                             backgroundColor: 'background.paper',
                              border: '2px solid #191919',
                              borderRadius: 2,
                              fontSize: '0.8rem',

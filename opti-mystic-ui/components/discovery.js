@@ -166,13 +166,15 @@ const Discovery = () => {
       <Dialog
           fullScreen
           open={open}
-          onClose={handleClose}>
-        <Toolbar>
+          onClose={handleClose}
+          sx={{ bgcolor:'background.default'}}>
+        <Toolbar sx={{ bgcolor:'background.default'}}>
           <IconButton
               edge="start"
               color="inherit"
               onClick={handleClose}
               aria-label="close"
+              sx={{":hover":{bgcolor:'primary.main'}}}
           >
             <CloseIcon />
           </IconButton>

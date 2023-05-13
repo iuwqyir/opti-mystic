@@ -54,7 +54,7 @@ const darkTheme = createTheme({
     },
     background: {
         paper: "#111111",
-        default: "#212121",
+        default: "#000000",
         border: "#303030"
     }, 
     action: {
