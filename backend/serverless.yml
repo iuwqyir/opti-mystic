@@ -5,6 +5,9 @@ provider:
   name: aws
   runtime: nodejs16.x
 
+plugins:
+  - serverless-offline
+
 functions:
   rollup-detector:
     description: Detect rollups with a rolling window

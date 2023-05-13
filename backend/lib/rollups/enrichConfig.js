@@ -703,8 +703,6 @@ module.exports = async (rollup) => {
   rollup.batcher = parseByte32(config.batcher)
   rollup.proposer = parseByte32(config.proposer)
   rollup.sequencer = config.sequencer;
-  rollup.blockTimestamp = 1683398728;
-  rollup.blockHash = "0xf975564d62334ac2a950c2ec842c136642c70a42eda4f4fb9fca8901ed26a882";
 
   return rollup
 };
