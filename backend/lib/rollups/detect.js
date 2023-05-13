@@ -18,16 +18,23 @@ const findRollups = (deploymentsFrom) => {
   return rollups
 }
 
-const serialize = (rollups) => {
+const serialize = async (rollups) => {
   if (!rollups?.length) return []
-  return rollups.map(rollup => {
+  const result = []
+  for (const rollup of rollups) {
     const admin = rollup?.[0]?.from
+    const minBlockNumber = Math.min(...rollup.map(tx => tx.blockNumber))
+    let oldestBlock = await alchemy.core.getBlock(minBlockNumber);
     const createdContractAddresses = rollup?.map(tx => tx.creates)
-    return {
+    result.push({
       admin,
-      created: createdContractAddresses
-    }
-  })
+      created: createdContractAddresses,
+      blockTimestamp: oldestBlock.timestamp,
+      blockHash: oldestBlock.hash
+    })
+  }
+
+  return result
 }
 
 module.exports = async () => {
@@ -50,5 +57,5 @@ module.exports = async () => {
     })
   }
   const rollups = findRollups(deploymentsFrom)
-  return serialize(rollups)
+  return await serialize(rollups)
 };
