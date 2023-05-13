@@ -57,7 +57,7 @@ const Discovery = () => {
                 <ListItem> admin: {truncateEthAddress(entry.admin)} </ListItem>
                 <ListItem>batcher: {truncateEthAddress(entry.batcher)}</ListItem>
                 <ListItem>sequencer: {truncateEthAddress(entry.sequencer)}</ListItem>
-              <ListItem>deployed at: {new Date(entry.detected_at).toLocaleString()}</ListItem>
+                <ListItem>deployed at: {new Date(entry.l1_start_time * 1000).toLocaleString()}</ListItem>
             </List>
           </ImageListItem>
         </Button>
