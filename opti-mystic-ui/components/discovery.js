@@ -6,7 +6,6 @@ import styles from "@/styles/Home.module.css";
 import truncateEthAddress from 'truncate-eth-address'
 import axios from 'axios';
 
-
 const itemsPerPage = 9;
 
 const Discovery = () => {
@@ -20,12 +19,18 @@ const Discovery = () => {
   useEffect(() => {
     const fetchRollups = async () => {
       const { data: rollups, error} = await axios.get(`/api/getRollups`);
+      setRollups(rollups)
+      console.log('🦄🦄🦄🦄', rollups)
       return rollups
     }
-    fetchRollups().then((r) => {
-      setRollups(r)
-      console.log('🦄🦄🦄🦄', rollups)
-    })
+    
+    const interval=setInterval(() => {
+      fetchRollups()
+      console.log('This will run every second!');
+    }, 1000);
+
+    return () => clearInterval(interval);
+
   }, [])
   
 
