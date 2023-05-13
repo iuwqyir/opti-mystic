@@ -11,7 +11,7 @@ module.exports = async (rollup) => {
     l1_start_time: rollup.blockTimestamp,
     l1_chain_name: 'görli', // TODO
     contracts: JSON.stringify(rollup.created),
-    blockHash: rollup.blockHash
+    block_hash: rollup.blockHash
   }
   const { error } = await supabase
     .from('rollups')
