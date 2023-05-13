@@ -28,7 +28,7 @@ export default function Home() {
         <div className={styles.main}>
           <Header />
           <SearchComp />
-          <Discovery /> 
+          <Discovery />
         </div>
     </ThemeProvider>
     </>

@@ -17,6 +17,8 @@ export default function Search() {
 
     const response = await axios.get(`http://localhost:5001/address`, {
       params: { address: searchInput },
+    }).catch((e) => {
+      console.log(e)
     });
 
     setResult(response.data.result);

@@ -20,11 +20,11 @@ const lightTheme = createTheme({
     },
     background: {
         paper: "#E4E4E4",
-        default: "FFFFFF", 
+        default: "#FFFFFF",
     }, 
         action: {
         active: "#033DDF",
-        hover: "#033DDF", 
+        hover: "#033DDF",
         hoverOpacity: 0.4,
     }
   },
@@ -41,7 +41,7 @@ const darkTheme = createTheme({
     secondary: {
         main: "#3E9CD6",
         light: "#90CAF9", 
-        dark: "357DAB",
+        dark: "#357DAB",
     },
     text: {
         primary: "#cccccc",
@@ -51,12 +51,12 @@ const darkTheme = createTheme({
     },
     background: {
         paper: "#111111",
-        default: "#212121", 
+        default: "#212121",
         border: "#303030"
     }, 
     action: {
         active: "#033DDF",
-        hover: "#033DDF", 
+        hover: "#033DDF",
         hoverOpacity: 0.4,
     }
   },
