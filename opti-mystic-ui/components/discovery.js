@@ -86,7 +86,7 @@ const Discovery = () => {
                 borderColor: 'background.border',
                 borderRadius: '10px',
                 color: 'text.primary',
-                fontFamily: 'Roboto', 
+                fontFamily: 'Rubik', 
                 textTransform: 'none',
                 fontWeight: 'normal'
               }}>
