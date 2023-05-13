@@ -21,11 +21,9 @@ export default function Header() {
   });
   return (
     <section className={styles.header}>
-      <section className={styles.topHeader}>
+      <section className={styles.navbar}>
         OP Price:{" "}
         <span className={styles.blueText}>${Number(opPrice).toFixed(2)}</span>
-      </section>
-      <section className={styles.navbar}>
         <Image src={Logo} alt="Etherscan Logo" className={styles.logo} />
         <section className={styles.menu}>
           <p>Rollup Discovery</p>

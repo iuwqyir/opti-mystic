@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, ImageList, ImageListItem, Pagination, List, ListItem, Button } from '@mui/material';
+import { Box, ImageList, ImageListItem, Pagination, List, ListItem, Button, ListItemText } from '@mui/material';
 import styles from "@/styles/Home.module.css";
+import truncateEthAddress from 'truncate-eth-address'
 
 const generateDummyEntries = (count) => {
   const entries = [];
@@ -37,11 +38,21 @@ const Discovery = () => {
       <ImageList container cols={3} gap={2}>
         {paginatedEntries.map((entry, index) => (
         <Button  sx={{ padding: 0}}>
-          <ImageListItem key={index} item className={styles.rollupCard}>
-            <List>
-                <ListItem>admin: {entry.admin}</ListItem>
-                <ListItem>batcher: {entry.batcher}</ListItem>
-                <ListItem>sequencer: {entry.sequencer}</ListItem>
+          <ImageListItem key={index} item sx={{ width: 1}}>
+            <List 
+              sx={{
+                bgcolor: 'background.paper', 
+                borderStyle: 'solid',
+                borderWidth: '1px',
+                borderColor: 'background.border',
+                color: 'text.primary', 
+                fontFamily: 'Roboto', 
+                textTransform: 'none',
+                fontWeight: 'normal'
+              }}>
+                <ListItem> admin: {truncateEthAddress(entry.admin)} </ListItem>
+                <ListItem>batcher: {truncateEthAddress(entry.batcher)}</ListItem>
+                <ListItem>sequencer: {truncateEthAddress(entry.sequencer)}</ListItem>
                 <ListItem>deployed at: {new Date(entry.timestamp).toLocaleString()}</ListItem>
             </List>
           </ImageListItem>

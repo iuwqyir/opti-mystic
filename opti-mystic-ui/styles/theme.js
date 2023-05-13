@@ -14,7 +14,7 @@ const lightTheme = createTheme({
       dark: "#043F64", 
     },
     text: {
-        primary: "101010",
+        primary: "#101010",
         secondary:"#033DDF", 
         disabled: "#312E2E", 
     },
@@ -50,8 +50,9 @@ const darkTheme = createTheme({
 
     },
     background: {
-        paper: "#101010",
+        paper: "#312E2E",
         default: "#101010", 
+        border: "#191919"
     }, 
     action: {
         active: "033DDF",
