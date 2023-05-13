@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState } from "react";
-import {Container, IconButton, Box, Typography, Link } from '@mui/material';
 import styles from "@/styles/Home.module.css";
 import { lightTheme, darkTheme } from '../styles/theme.js'
 import { ThemeProvider } from '@mui/material/styles';
@@ -10,13 +9,10 @@ import Header from "../components/header.js";
 import SearchComp from "../components/search.js";
 import Discovery from "../components/discovery.js";
 
+
 export default function Home() {
 
   const [theme, setTheme] = useState(darkTheme);
-
-  const toggleTheme = () => {
-    setTheme(theme.palette.mode === "light" ? darkTheme : lightTheme);
-  };
 
 
   return (
@@ -32,7 +28,7 @@ export default function Home() {
         <div className={styles.main}>
           <Header />
           <SearchComp />
-          <Discovery/> 
+          <Discovery /> 
         </div>
     </ThemeProvider>
     </>

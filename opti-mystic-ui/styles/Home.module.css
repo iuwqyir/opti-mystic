@@ -3,56 +3,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-color: #161616;
-}
-
-.header {
-    width: 100%;
-    background-color: #111111;
-}
-
-.topHeader {
-    display: flex;
-    align-items: center;
-    color: #bbbbbb;
-    height: 3rem;
-    font-size: 0.85rem;
-    padding: 0 11.5rem;
-    border-bottom: 1px solid #222222;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 3.3rem;
-    padding: 0 11.5rem;
-    border-bottom: 1px solid #222222;
-}
-
-.logo {
-    width: 9rem;
-    height: auto;
-}
-
-.menu {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    color: #cccccc;
-    width: 44.7rem;
-    letter-spacing: 0.01rem;
-}
-
-.menu>p {
-    display: flex;
-    align-items: center;
-        padding-right: 10px;
-}
-
-.menu>p:hover {
-    color: #DB8189;
-    cursor: pointer;
+    background-color: #000000;
 }
 
 .arrow {
@@ -61,12 +12,12 @@
 }
 
 .searchContainer {
-    width: 80%;
+    width: 85%;
 }
 
 .searchSection {
     padding-top: 2rem;
-    padding-bottom: 2rem; 
+    padding-bottom: 0.5rem; 
 }
 
 .searchSection>h3 {
@@ -209,8 +160,12 @@
 }
 
 .discovery {
-    width: 80%; 
+    width: 85%; 
     justify-content: space-between;
+    border: 0.5px solid #424242;
+    border-radius: 0.3rem;
+    padding: 1%; 
+    margin-top: 1%;
 }
 
 .rollupCard {
@@ -223,6 +178,9 @@
     color: #cccccc
 }
 
-.rollupCard:hover {
-    box-shadow: 0.5px 0.5px rgba(216, 216, 216, 0.2);
+
+.listItemKey {
+    background-color: DB8189;
+    border-radius: 5px;
+    padding-right: 10px;
 }

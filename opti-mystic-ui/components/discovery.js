@@ -1,10 +1,36 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Box, ImageList, ImageListItem, Pagination, List, ListItem, Button, ListItemText } from '@mui/material';
+import { Box, ImageList, ImageListItem, Pagination, List, ListItem, Button, ListItemText, ListItemIcon, SvgIcon } from '@mui/material';
 import styles from "@/styles/Home.module.css";
-import truncateEthAddress from 'truncate-eth-address'
+import truncateEthAddress from 'truncate-eth-address'; 
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import BatchPredictionOutlinedIcon from '@mui/icons-material/BatchPredictionOutlined';
+import AnimationOutlinedIcon from '@mui/icons-material/AnimationOutlined';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import StormOutlinedIcon from '@mui/icons-material/StormOutlined';
+import LinkIcon from '@mui/icons-material/Link';
+import goerliIcon from '../public/assets/goerli.svg';
+import maticIcon from '../public/assets/matic.svg';
+import optimismIcon from '../public/assets/optimism.svg';
+import Image from "next/image";
 import axios from 'axios';
+
+const generateDummyEntries = (count) => {
+  const entries = [];
+  for (let i = 0; i < count; i++) {
+    entries.push({
+      admin: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`,
+      batcher: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`, 
+      proposer: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`, 
+      sequencer: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`, 
+      blockHash: `0xf975564d62334ac2a950c2ec842c136642c70a42eda4f4fb9fca8901ed26a882`, 
+      timestamp: 1683398728 * 100,
+      l1_chain_name: `matic`,
+    });
+  }
+  return entries;
+};
 
 const itemsPerPage = 9;
 
@@ -39,9 +65,14 @@ const Discovery = () => {
 
   return (
     <div className={styles.discovery}>
-      <ImageList container cols={3} gap={2}>
+      <ImageList container cols={3} gap={10}>
         {paginatedEntries.map((entry, index) => (
-        <Button  sx={{ padding: 0}}>
+        <Button  sx={{ 
+          padding: 0, 
+          ':hover': {
+            bgcolor: '#000000', 
+          }
+          }}>
           <ImageListItem key={index} item sx={{ width: 1}}>
             <List 
               sx={{
@@ -49,15 +80,49 @@ const Discovery = () => {
                 borderStyle: 'solid',
                 borderWidth: '1px',
                 borderColor: 'background.border',
+                borderRadius: '10px',
                 color: 'text.primary', 
                 fontFamily: 'Roboto', 
                 textTransform: 'none',
                 fontWeight: 'normal'
               }}>
-                <ListItem> admin: {truncateEthAddress(entry.admin)} </ListItem>
-                <ListItem>batcher: {truncateEthAddress(entry.batcher)}</ListItem>
-                <ListItem>sequencer: {truncateEthAddress(entry.sequencer)}</ListItem>
-                <ListItem>deployed at: {new Date(entry.l1_start_time * 1000).toLocaleString()}</ListItem>
+                <ListItem sx={{ height: 34}}> 
+                  <ListItemIcon sx={{ color:'primary.light'}}>
+                    <AdminPanelSettingsOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin" sx={{width: 1 / 10}} />
+                  <ListItemText primary={truncateEthAddress(entry.admin)}  />
+                </ListItem>
+                <ListItem sx={{ height: 34}}> 
+                  <ListItemIcon sx={{ color:'primary.light'}}>
+                    <BatchPredictionOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Batcher" sx={{width: 1 / 10}}/>
+                  <ListItemText primary={truncateEthAddress(entry.batcher)}  />
+                </ListItem>
+                <ListItem sx={{ height: 34}}> 
+                  <ListItemIcon sx={{ color:'primary.light'}}>
+                    <AnimationOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Sequencer" sx={{width: 1 / 10}} />
+                  <ListItemText primary={truncateEthAddress(entry.sequencer)}  />
+                </ListItem>
+                <ListItem sx={{ height: 34}}> 
+                  <ListItemIcon sx={{ color:'primary.light'}}>
+                    <AccessTimeOutlinedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Deployed at" sx={{width: 2 / 8}} />
+                  <ListItemText primary={new Date(entry.l1_start_time * 1000).toLocaleString()}  />
+                </ListItem>
+                <ListItem sx={{ height: 34, width: 2/3}}> 
+                  <ListItemIcon sx={{ color:'primary.light'}}>
+                    <StormOutlinedIcon />
+                  </ListItemIcon>
+                    <ListItemText primary="L1"/>
+                    <Image src={entry.l1_chain_name == 'goerli' ? goerliIcon : maticIcon } alt="chain logo" width={15} height={15}/>
+                    <ListItemText primary="L2" sx={{ ml:8}}/>
+                    <Image src={optimismIcon} alt="chain logo" width={15} height={15} />
+                </ListItem>
             </List>
           </ImageListItem>
         </Button>

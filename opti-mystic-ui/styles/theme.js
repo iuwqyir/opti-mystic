@@ -23,8 +23,8 @@ const lightTheme = createTheme({
         default: "FFFFFF", 
     }, 
         action: {
-        active: "033DDF",
-        hover: "033DDF", 
+        active: "#033DDF",
+        hover: "#033DDF", 
         hoverOpacity: 0.4,
     }
   },
@@ -50,13 +50,13 @@ const darkTheme = createTheme({
 
     },
     background: {
-        paper: "#312E2E",
-        default: "#101010", 
-        border: "#191919"
+        paper: "#111111",
+        default: "#212121", 
+        border: "#303030"
     }, 
     action: {
-        active: "033DDF",
-        hover: "033DDF", 
+        active: "#033DDF",
+        hover: "#033DDF", 
         hoverOpacity: 0.4,
     }
   },

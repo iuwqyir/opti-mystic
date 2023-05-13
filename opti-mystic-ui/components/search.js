@@ -26,7 +26,6 @@ export default function Search() {
   return (
     <section className={styles.searchContainer}>
       <section className={styles.searchSection}>
-        <h3>The Optimistic Cross Roll Up Explorer</h3>
         <section className={styles.input_section}>
           <input
             className={styles.inputField}
@@ -34,7 +33,7 @@ export default function Search() {
             id="inputField"
             name="inputField"
             maxLength="120"
-            placeholder="Search by Address / Txn Hash / Block / Token / Domain Name"
+            placeholder="Search by Address / Txn Hash / Timestamp"
             required
             onChange={changeHandler}
           />
