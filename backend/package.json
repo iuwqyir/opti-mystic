@@ -4,6 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
+    "dev": "export PROVIDER_API_KEY=__REPLACE__THIS__ SUPABASE_URL=__REPLACE__THIS__ SUPABASE_API_KEY=__REPLACE__THIS__ && sls offline --stage dev",
     "deploy": "export PROVIDER_API_KEY=__REPLACE__THIS__ SUPABASE_URL=__REPLACE__THIS__ SUPABASE_API_KEY=__REPLACE__THIS__ && sls deploy --stage prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
