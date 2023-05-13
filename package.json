@@ -15,6 +15,7 @@
     "serverless-offline": "^12.0.4"
   },
   "dependencies": {
-    "alchemy-sdk": "^2.8.3"
+    "alchemy-sdk": "^2.8.3",
+    "ethers": "^5.7.2"
   }
 }
