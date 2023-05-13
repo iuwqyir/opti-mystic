@@ -16,21 +16,6 @@ import optimismIcon from '../public/assets/optimism.svg';
 import Image from "next/image";
 import axios from 'axios';
 
-const generateDummyEntries = (count) => {
-  const entries = [];
-  for (let i = 0; i < count; i++) {
-    entries.push({
-      admin: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`,
-      batcher: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`, 
-      proposer: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`, 
-      sequencer: `0x7F4e33e1C80Df11bEcc8E6e15634b80A1F6A846a`, 
-      blockHash: `0xf975564d62334ac2a950c2ec842c136642c70a42eda4f4fb9fca8901ed26a882`, 
-      timestamp: 1683398728 * 100,
-      l1_chain_name: `matic`,
-    });
-  }
-  return entries;
-};
 
 const itemsPerPage = 9;
 
@@ -48,6 +33,8 @@ const Discovery = () => {
       setRollups(rollups)
       return rollups
     }
+    
+    fetchRollups()
     
     const interval=setInterval(() => {
       fetchRollups()
