@@ -44,8 +44,8 @@ module.exports = async () => {
             await save(rollup)
           } catch (e) {
             console.warn(e.message)
-            delete DEPLOYMENTS[tx.from]
           }
+          delete DEPLOYMENTS[tx.from]
         }
       }
     }
