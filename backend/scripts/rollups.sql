@@ -11,5 +11,9 @@ create table rollups (
   l1_start_time integer not null,
   l1_chain_name text not null,
   block_hash text not null,
-  contracts JSON not null
+  contracts JSON not null,
+  contracts_hash text not null
 );
+
+CREATE UNIQUE INDEX rollup_contracts_hash_index
+ON rollups(contracts_hash);
