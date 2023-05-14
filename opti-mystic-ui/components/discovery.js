@@ -27,11 +27,12 @@ import Image from "next/image";
 import axios from 'axios';
 import {CloseIcon} from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
 import {RollupDialog} from "@/components/rollupDialog";
-
+import { getRegistryAbi } from '@/util/abiFetcher';
+import { ethers} from 'ethers'
 
 const itemsPerPage = 9;
 
-const Discovery = () => {
+const Discovery = ({onchain}) => {
   const [page, setPage] = useState(1);
   const [rollups, setRollups]=useState([]);
 
@@ -45,15 +46,36 @@ const Discovery = () => {
       setRollups(rollups)
       return rollups
     }
+    const fetchRollupsFromChain = async () => {
+      const address = "0xbA4800E9e89e9019b1cFAD552422EC75fAF3E1C5"
+      let provider=new ethers.providers.AlchemyProvider("maticmum", "sB8_m_01saBTbDkw_rdX4ifwvnZ-bNsh");
 
-    fetchRollups()
+      let contract=new ethers.Contract(address, getRegistryAbi(), provider);
+      const rollups = await contract.getRollups()
+      setRollups(rollups)
+      return rollups
+    }
 
-    const interval=setInterval(() => {
+    if(onchain) {
+      fetchRollupsFromChain()
+
+      const interval = setInterval(() => {
+        fetchRollupsFromChain()
+      }, 3000);
+
+      return () => clearInterval(interval);
+
+    } else {
       fetchRollups()
-      console.log('This will run every second!');
-    }, 3000);
+  
+      const interval=setInterval(() => {
+        fetchRollups()
+        console.log('This will run every second!');
+      }, 3000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
+
 
   }, [])
 
