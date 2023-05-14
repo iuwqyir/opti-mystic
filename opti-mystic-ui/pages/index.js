@@ -6,7 +6,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Header from "../components/header.js";
-import SearchComp from "../components/search.js";
 import Discovery from "../components/discovery.js";
 
 
@@ -29,7 +28,6 @@ export default function Home() {
       <CssBaseline />
         <div className={styles.main}>
           <Header />
-          <SearchComp />
           <Discovery onchain={false}/>
         </div>
     </ThemeProvider>
