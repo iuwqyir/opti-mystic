@@ -6,7 +6,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Header from "../components/header.js";
-import SearchComp from "../components/search.js";
 import Discovery from "../components/discovery.js";
 
 

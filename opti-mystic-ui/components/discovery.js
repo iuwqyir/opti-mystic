@@ -36,7 +36,6 @@ const Discovery = ({onchain}) => {
   const [page, setPage] = useState(1);
   const [rollups, setRollups]=useState([]);
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [renderKey, setRenderKey] = React.useState(0);
   const [paginatedEntries, setPaginatedEntries] = useState([]);
 
   const handlePaginationChange = (event, value) => {
@@ -53,7 +52,8 @@ const Discovery = ({onchain}) => {
         .sort((a, b) => new Date(a.detected_at)-new Date(b.detected_at))
         .slice((page - 1) * itemsPerPage, page * itemsPerPage);
       
-      setPaginatedEntries(newPaginatedEntries); 
+      setPaginatedEntries(newPaginatedEntries);
+
     }
     const fetchRollupsFromChain = async () => {
       const address = "0xbA4800E9e89e9019b1cFAD552422EC75fAF3E1C5"
@@ -67,7 +67,7 @@ const Discovery = ({onchain}) => {
 
     if(onchain) {
       fetchRollupsFromChain()
-
+      
       const interval = setInterval(() => {
         fetchRollupsFromChain()
       }, 3000);
@@ -110,7 +110,6 @@ const Discovery = ({onchain}) => {
        .sort((a, b) => new Date(a.detected_at)-new Date(b.detected_at))
        .slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
-     setRenderKey((prevKey) => prevKey + 1);
      setPaginatedEntries(filteredPaginatedEntries); 
   };
 
