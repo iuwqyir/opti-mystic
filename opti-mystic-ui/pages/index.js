@@ -3,11 +3,11 @@ import { useState } from "react";
 import styles from "@/styles/Home.module.css";
 import { lightTheme, darkTheme } from '../styles/theme.js'
 import { ThemeProvider } from '@mui/material/styles';
+import { Typography} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Header from "../components/header.js";
 import Discovery from "../components/discovery.js";
-import GuestFooter from "../components/footer.js";
 
 
 export default function Home() {
@@ -30,7 +30,9 @@ export default function Home() {
         <div className={styles.main}>
           <Header />
           <Discovery onchain={false}/>
-          <GuestFooter /> 
+          <Typography variant="caption" color="initial">
+                ❤️ built with love by Optimists at ETH Global Lisbon 2023 ❤️
+          </Typography>
         </div>
     </ThemeProvider>
     </>

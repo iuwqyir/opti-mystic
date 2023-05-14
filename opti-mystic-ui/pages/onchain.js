@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Opti Mystic</title>
+                <title>OptiMystic</title>
                 <meta name="description" content="Cross optimistic roll-up discovery service" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
