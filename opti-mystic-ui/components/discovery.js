@@ -151,7 +151,7 @@ const Discovery = ({onchain}) => {
                     <AccessTimeOutlinedIcon />
                   </ListItemIcon>
                   <ListItemText primary="Deployed at" sx={{width: 2 / 8}} />
-                  <ListItemText primary={onchain? entry[3]["_hex"] : new Date(entry.l1_start_time * 1000).toLocaleString()}  />
+                  <ListItemText primary={onchain? new Date(entry[3].toString() * 1000).toLocaleString() : new Date(entry.l1_start_time * 1000).toLocaleString()}  />
                 </ListItem>
                 <ListItem sx={{ height: 34, width: 2/3}}>
                   <ListItemIcon sx={{ color:'primary.light'}}>
