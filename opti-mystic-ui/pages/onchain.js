@@ -28,7 +28,6 @@ export default function Home() {
                 <CssBaseline />
                 <div className={styles.main}>
                     <Header />
-                    <SearchComp />
                     <Discovery onchain={true} />
                 </div>
             </ThemeProvider>
