@@ -7,7 +7,7 @@ const RollupDialog = (prop) => {
 
     const setEnvs = () => {
         return `export SEQ_ADDR=${prop?.rollup?.sequencer}
-export L1_RPC=https://eth-goerli.g.alchemy.com/v2/hWefenUDVd3MGsZmTHqsCpXVksyWIr7T
+export L1_RPC=${prop?.rollup?.l1_chain_name === "maticmum" ? "https://polygon-mumbai.g.alchemy.com/v2/qmwi6r04xCtv1ErY6XcCsyq-bf-Spvif" : "https://eth-goerli.g.alchemy.com/v2/hWefenUDVd3MGsZmTHqsCpXVksyWIr7T"}
 export RPC_KIND=alchemy`
     }
     const runOpGeth = () => {
@@ -57,13 +57,13 @@ export RPC_KIND=alchemy`
         return `{
     "numDeployConfirmations": 1,
 
-    "finalSystemOwner": ${prop?.rollup?.admin},
-    "portalGuardian": ${prop?.rollup?.admin},
-    "controller": ${prop?.rollup?.admin},
+    "finalSystemOwner": "${prop?.rollup?.admin}",
+    "portalGuardian": "${prop?.rollup?.admin}",
+    "controller": "${prop?.rollup?.admin}",
 
-    "l1StartingBlockTag": ${prop?.rollup?.blockHash},
+    "l1StartingBlockTag": "${prop?.rollup?.block_hash}",
 
-    "l1ChainID": 5,
+    "l1ChainID": ${prop?.rollup?.l1_chain_name === "maticmum" ? 80001 : 5},
     "l2ChainID": 42069,
     "l2BlockTime": 2,
 
@@ -71,30 +71,30 @@ export RPC_KIND=alchemy`
     "sequencerWindowSize": 3600,
     "channelTimeout": 300,
 
-    "p2pSequencerAddress": ${prop?.rollup?.sequencer},
+    "p2pSequencerAddress": "${prop?.rollup?.sequencer}",
     "batchInboxAddress": "0xff00000000000000000000000000000000042069",
-    "batchSenderAddress": ${prop?.rollup?.batcher},
+    "batchSenderAddress": "${prop?.rollup?.batcher}",
 
     "l2OutputOracleSubmissionInterval": 120,
     "l2OutputOracleStartingBlockNumber": 0,
-    "l2OutputOracleStartingTimestamp": ${prop?.rollup?.timestamp},
+    "l2OutputOracleStartingTimestamp": ${prop?.rollup?.l1_start_time},
 
-    "l2OutputOracleProposer": ${prop?.rollup?.proposer},
-    "l2OutputOracleChallenger": ${prop?.rollup?.admin},
+    "l2OutputOracleProposer": "${prop?.rollup?.proposer}",
+    "l2OutputOracleChallenger": "${prop?.rollup?.admin}",
 
     "finalizationPeriodSeconds": 12,
 
-    "proxyAdminOwner": ${prop?.rollup?.admin},
-    "baseFeeVaultRecipient": ${prop?.rollup?.admin},
-    "l1FeeVaultRecipient": ${prop?.rollup?.admin},
-    "sequencerFeeVaultRecipient": ${prop?.rollup?.admin},
+    "proxyAdminOwner": "${prop?.rollup?.admin}",
+    "baseFeeVaultRecipient": "${prop?.rollup?.admin}",
+    "l1FeeVaultRecipient": "${prop?.rollup?.admin}",
+    "sequencerFeeVaultRecipient": "${prop?.rollup?.admin}",
 
     "gasPriceOracleOverhead": 2100,
     "gasPriceOracleScalar": 1000000,
 
     "governanceTokenSymbol": "OP",
     "governanceTokenName": "Optimism",
-    "governanceTokenOwner": ${prop?.rollup?.admin},
+    "governanceTokenOwner": "${prop?.rollup?.admin}",
 
     "l2GenesisBlockGasLimit": "0x1c9c380",
     "l2GenesisBlockBaseFeePerGas": "0x3b9aca00",
