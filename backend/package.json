@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "dev": "export PROVIDER_API_KEY=__REPLACE__THIS__ SUPABASE_URL=__REPLACE__THIS__ SUPABASE_API_KEY=__REPLACE__THIS__ && sls offline --stage dev",
+    "dev": "export PROVIDER_API_KEY=__REPLACE__THIS__ SUPABASE_URL=__REPLACE__THIS__ SUPABASE_API_KEY=__REPLACE__THIS__ SIGNER_PRIVATE_KEY=__REPLACE__THIS__ && sls offline --stage dev",
     "deploy": "export PROVIDER_API_KEY=__REPLACE__THIS__ SUPABASE_URL=__REPLACE__THIS__ SUPABASE_API_KEY=__REPLACE__THIS__ && sls deploy --stage prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.21.0",
+    "@thirdweb-dev/sdk": "^3.10.14",
     "alchemy-sdk": "^2.8.3",
     "ethers": "^5.7.2"
   }
