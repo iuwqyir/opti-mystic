@@ -9,11 +9,8 @@ The discory service helps builders discover rollups and give them ready made con
 Basicly it enable users to discover a rollup and run it in 4 easy steps the UI propose.
 
 ## How it's Made
-
-The solution has three components:
-### The discovery service
-this service runs the discovery logic to detect the deployment of the contracts responsible for a rollup once they get created. 
-In addition the service, finds the addresses of the admin/batcher/Sequesnder... 
+The discovery logic to detect the deployments of the contracts is responsible for detecting rollups once they are created. 
+In addition the service, finds the addresses of the rollups config and present it to in an intuitive UI.
 
 The discovery service also pushes the discovered rollups to the following contract in polygon: [0xbA4800E9e89e9019b1cFAD552422EC75fAF3E1C5](https://mumbai.polygonscan.com/address/0xbA4800E9e89e9019b1cFAD552422EC75fAF3E1C5)
 
