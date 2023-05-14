@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Head>
         <title>Opti Mystic</title>
-        <meta name="description" content="Cross optimistic roll-up explorer" />
+        <meta name="description" content="Cross optimistic roll-up discovery service" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
