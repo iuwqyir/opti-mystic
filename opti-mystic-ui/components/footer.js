@@ -5,34 +5,10 @@ import Image from "next/image";
 
 export default function GuestFooter() {
   return (
-    <Paper sx={{marginTop: 'calc(10% + 60px)', bottom: 0}} component="footer" square variant="outlined">
-      <Container maxWidth="lg">
-        <Box
-          sx={{
-            flexGrow: 1,
-            justifyContent: "center",
-            display: "flex",
-            my:1
-          }}
-        >
-          <Link href="/">
-            <Image priority src="/Logo.svg" width={75} height={30} alt="Logo" />
-          </Link>
-        </Box>
-
-        <Box
-          sx={{
-            flexGrow: 1,
-            justifyContent: "center",
-            display: "flex",
-            mb: 2,
-          }}
-        >
+      <Box sx={{ width: 1, bgcolor:'background.paper', position:'absolute', p:1,  display: 'flex', bottom:'0', justifyContent: 'center'}}>
           <Typography variant="caption" color="initial">
-                Built by Optimits at ETH Global
+                ❤️ built with love by Optimists at ETH Global Lisbon 2023 ❤️
           </Typography>
-        </Box>
-      </Container>
-    </Paper>
+      </Box>
   );
 }
