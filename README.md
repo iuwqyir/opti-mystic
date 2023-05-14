@@ -24,3 +24,8 @@ The stack we used is:
 * Backend: Nodejs server
 * Node: we used the OP stack tools
 * Smart contract: Solidity
+
+This is an overview of the project structure:
+![sdfd drawio (1)](https://github.com/iuwqyir/opti-mystic/assets/9674012/224ff585-6b16-45fe-9b37-64e8390a7a88)
+
+
