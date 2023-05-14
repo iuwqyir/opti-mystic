@@ -5,7 +5,7 @@ const lightTheme = createTheme({
     mode: "light",
     primary: {
       main: "#101010",
-      light: "#DB8189", 
+      light: "#FF0420", 
       dark: "#8C001A",
     },
     secondary: {
@@ -31,11 +31,14 @@ const lightTheme = createTheme({
 });
 
 const darkTheme = createTheme({
+  typography: {
+    fontFamily: 'Rubik',
+  },
   palette: {
     mode: "dark",
     primary: {
-        main: "#FAC4C9",
-        light: "#DB8189", 
+        main: "#FF0420",
+        light: "#FF0420", 
         dark: "#8C001A",
     },
     secondary: {
@@ -45,13 +48,13 @@ const darkTheme = createTheme({
     },
     text: {
         primary: "#cccccc",
-        secondary:"#DB8189", 
+        secondary:"#FF0420", 
         disabled: "#312E2E", 
 
     },
     background: {
         paper: "#111111",
-        default: "#212121",
+        default: "#000000",
         border: "#303030"
     }, 
     action: {

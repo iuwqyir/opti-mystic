@@ -121,7 +121,7 @@ const Discovery = ({onchain}) => {
                 borderColor: 'background.border',
                 borderRadius: '10px',
                 color: 'text.primary',
-                fontFamily: 'Roboto', 
+                fontFamily: 'Rubik', 
                 textTransform: 'none',
                 fontWeight: 'normal'
               }}>
@@ -188,13 +188,15 @@ const Discovery = ({onchain}) => {
       <Dialog
           fullScreen
           open={open}
-          onClose={handleClose}>
-        <Toolbar>
+          onClose={handleClose}
+          sx={{ bgcolor:'background.default'}}>
+        <Toolbar sx={{ bgcolor:'background.default'}}>
           <IconButton
               edge="start"
               color="inherit"
               onClick={handleClose}
               aria-label="close"
+              sx={{":hover":{bgcolor:'primary.main'}}}
           >
             <CloseIcon />
           </IconButton>
