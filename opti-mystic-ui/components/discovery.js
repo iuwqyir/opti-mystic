@@ -52,9 +52,7 @@ const Discovery = ({onchain}) => {
         .sort((a, b) => new Date(a.detected_at)-new Date(b.detected_at))
         .slice((page - 1) * itemsPerPage, page * itemsPerPage);
           
-      if (searchQuery != ''){
         setPaginatedEntries(newPaginatedEntries);
-      }
 
     }
     const fetchRollupsFromChain = async () => {
