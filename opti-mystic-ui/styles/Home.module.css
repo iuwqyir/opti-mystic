@@ -166,7 +166,11 @@
 }
 
 .discovery {
-    width: 85%; 
+    width: 85%
+}
+
+.discoveryBody {
+    width: 100%; 
     justify-content: space-between;
     border: 0.5px solid #424242;
     border-radius: 0.3rem;

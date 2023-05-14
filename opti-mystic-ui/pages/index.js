@@ -6,7 +6,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Header from "../components/header.js";
-import SearchComp from "../components/search.js";
 import Discovery from "../components/discovery.js";
 
 
@@ -19,7 +18,7 @@ export default function Home() {
     <>
       <Head>
         <title>Opti Mystic</title>
-        <meta name="description" content="Cross optimistic roll-up explorer" />
+        <meta name="description" content="Cross optimistic roll-up discovery service" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,7 +28,6 @@ export default function Home() {
       <CssBaseline />
         <div className={styles.main}>
           <Header />
-          <SearchComp />
           <Discovery onchain={false}/>
         </div>
     </ThemeProvider>

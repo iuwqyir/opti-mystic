@@ -11,7 +11,7 @@ import {
   Button,
   ListItemText,
   ListItemIcon,
-  Dialog, Toolbar, IconButton, Slide
+  Dialog, Toolbar, IconButton, Slide, TextField
 } from '@mui/material';
 import styles from "@/styles/Home.module.css";
 import truncateEthAddress from 'truncate-eth-address';
@@ -35,6 +35,9 @@ const itemsPerPage = 9;
 const Discovery = ({onchain}) => {
   const [page, setPage] = useState(1);
   const [rollups, setRollups]=useState([]);
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [renderKey, setRenderKey] = React.useState(0);
+  const [paginatedEntries, setPaginatedEntries] = useState([]);
 
   const handlePaginationChange = (event, value) => {
     setPage(value);
@@ -44,7 +47,13 @@ const Discovery = ({onchain}) => {
     const fetchRollups = async () => {
       const { data: rollups, error} = await axios.get(`/api/getRollups`);
       setRollups(rollups)
-      return rollups
+
+
+      const newPaginatedEntries = rollups
+        .sort((a, b) => new Date(a.detected_at)-new Date(b.detected_at))
+        .slice((page - 1) * itemsPerPage, page * itemsPerPage);
+      
+      setPaginatedEntries(newPaginatedEntries); 
     }
     const fetchRollupsFromChain = async () => {
       const address = "0xbA4800E9e89e9019b1cFAD552422EC75fAF3E1C5"
@@ -79,13 +88,37 @@ const Discovery = ({onchain}) => {
 
   }, [])
 
+  const changeHandler = (e) => {
+    setSearchQuery(e.target.value);
+    handleSearch()
+  };
 
-  const paginatedEntries = rollups
-    .sort((a, b) => new Date(a.detected_at)-new Date(b.detected_at))
-    .slice((page - 1) * itemsPerPage, page * itemsPerPage);
   const [rollup, setRollup] = useState(0);
-
   const [open, setOpen] = useState(false);
+
+  const filterEntries = (entries) => {
+    return entries.filter((entry) =>
+      entry.admin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      entry.batcher.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      entry.sequencer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      entry.block_hash.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  };
+
+  const handleSearch = async () => {
+     const filteredPaginatedEntries = filterEntries(rollups)
+       .sort((a, b) => new Date(a.detected_at)-new Date(b.detected_at))
+       .slice((page - 1) * itemsPerPage, page * itemsPerPage);
+
+     setRenderKey((prevKey) => prevKey + 1);
+     setPaginatedEntries(filteredPaginatedEntries); 
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   const handleClickOpen = (entry) => {
     console.log(entry)
@@ -104,6 +137,38 @@ const Discovery = ({onchain}) => {
 
   return (
     <div className={styles.discovery}>
+      <section className={styles.searchContainer}>
+        <section className={styles.searchSection}>
+          <section className={styles.input_section}>
+            <input
+              className={styles.inputField}
+              type="text"
+              id="inputField"
+              name="inputField"
+              maxLength="120"
+              placeholder="Search by Address / Txn Hash / Timestamp"
+              required
+              onChange={changeHandler}
+              onKeyDown={handleKeyPress}
+            />
+            <button className={styles.btn} onClick={handleSearch}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className={styles.magnifying}
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </section>
+        </section>
+      </section>
+      <div className={styles.discoveryBody}>
       <ImageList container cols={3} gap={10}>
         {paginatedEntries.map((entry, index) => (
         <Button  sx={{
@@ -151,7 +216,7 @@ const Discovery = ({onchain}) => {
                     <AccessTimeOutlinedIcon />
                   </ListItemIcon>
                   <ListItemText primary="Deployed at" sx={{width: 2 / 8}} />
-                  <ListItemText primary={new Date(entry.l1_start_time * 1000).toLocaleString()}  />
+                  <ListItemText primary={onchain? new Date(entry[3].toString() * 1000).toLocaleString() : new Date(entry.l1_start_time * 1000).toLocaleString()}  />
                 </ListItem>
                 <ListItem sx={{ height: 34, width: 2/3}}>
                   <ListItemIcon sx={{ color:'primary.light'}}>
@@ -185,25 +250,27 @@ const Discovery = ({onchain}) => {
           />
         </Box>
       )}
-      <Dialog
-          fullScreen
-          open={open}
-          onClose={handleClose}
-          sx={{ bgcolor:'background.default'}}>
-        <Toolbar sx={{ bgcolor:'background.default'}}>
-          <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-              sx={{":hover":{bgcolor:'primary.main'}}}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Toolbar>
-        <RollupDialog rollup={rollup}/>
-      </Dialog>
+        <Dialog
+            fullScreen
+            open={open}
+            onClose={handleClose}
+            sx={{ bgcolor:'background.default'}}>
+          <Toolbar sx={{ bgcolor:'background.default'}}>
+            <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleClose}
+                aria-label="close"
+                sx={{":hover":{bgcolor:'primary.main'}}}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Toolbar>
+          <RollupDialog rollup={rollup}/>
+        </Dialog>
+      </div>
     </div>
+
   );
 };
 
